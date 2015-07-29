@@ -1,0 +1,29 @@
+{
+  "name": "expresss-params-handler",
+  "version": "0.1.0",
+  "description": "Express.js params handler",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "latest"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adslot/node-express-params-handler"
+  },
+  "keywords": [
+    "express-params",
+    "express-validation"
+  ],
+  "author": "Dmitry Shirokov <deadrunk@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Adslot/node-express-params-handler/issues"
+  },
+  "engines": {
+    "node": ">=0.8"
+  }
+}
