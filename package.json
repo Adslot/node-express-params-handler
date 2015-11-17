@@ -1,6 +1,6 @@
 {
   "name": "express-params-handler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Express.js params handler",
   "main": "index.js",
   "dependencies": {},

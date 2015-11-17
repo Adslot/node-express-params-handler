@@ -1,10 +1,10 @@
 
 module.exports = function(router) {
-  return function(name, handler) {
-    return router.param(name, function(req, res, next, val) {
-      var newVal;
-      if (typeof handler === 'function') {
-        if (!(newVal = handler(val))) {
+  return function(paramName, handler) {
+    return router.param(paramName, function(req, res, next, val, name) {
+      if (handler instanceof Function) {
+        var newVal = handler(val)
+        if (!newVal) {
           return next('route'); // bypass current route
         }
         req.params[name] = newVal;
