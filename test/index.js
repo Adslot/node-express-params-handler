@@ -30,7 +30,7 @@ describe('express-params-handler', function() {
         done()
       }
 
-      app.params['id'](req, res, next, '100')
+      app.params['id'](req, res, next, '100', 'id')
     })
 
     it('negative', function(done) {
@@ -42,7 +42,7 @@ describe('express-params-handler', function() {
         done()
       }
 
-      app.params['id'](req, res, next, 'kraken')
+      app.params['id'](req, res, next, 'kraken', 'id')
     })
 
   })
@@ -59,7 +59,7 @@ describe('express-params-handler', function() {
         done()
       }
 
-      app.params['date'](req, res, next, '2015-07-30')
+      app.params['date'](req, res, next, '2015-07-30', 'date')
     })
 
     it('negative', function(done) {
@@ -71,7 +71,7 @@ describe('express-params-handler', function() {
         done()
       }
 
-      app.params['date'](req, res, next, 'kraken')
+      app.params['date'](req, res, next, 'kraken', 'date')
     })
 
   })
@@ -82,7 +82,7 @@ describe('express-params-handler', function() {
     it('should complain', function() {
       assert.throws(function() {
         lib(app)('id', 'what?')
-        app.params['id'](req, res, next, 'whatever')
+        app.params['id'](req, res, next, 'whatever', 'id')
       }, /Unsupported param handler/)
     })
 
