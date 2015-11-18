@@ -4,6 +4,7 @@ module.exports = function(handler) {
     throw new Error('Unsupported param handler. Either function or Regexp expected')
 
   return function(req, res, next, val, name) {
+    val = req.params[name]
 
     if (handler instanceof Function) {
       var newVal = handler(val)
@@ -14,7 +15,6 @@ module.exports = function(handler) {
     } else if (handler instanceof RegExp) {
       if (!handler.test(val))
         return next('route') // bypass current route
-      req.params[name] = val
 
     } else {
       throw new Error('Should not reach here')
