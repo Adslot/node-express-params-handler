@@ -1,48 +1,46 @@
-var assert = require('assert'),
-  lib = require('../')
+var assert = require('assert')
+var request = require('supertest')
+var express = require('express')
+var lib = require('../')
 
 
 describe('express-params-handler', function() {
 
-  var app = {
-    params: {},
-    param: function(name, fn) {
-      app.params[name] = fn
-    }
-  };
-  var req, res, next;
+  var makeApp = function() {
+    var app = express()
+    app.param('id', lib(Number))
+    app.param('date', lib(/^\d{4}-\d{2}-\d{2}$/))
 
-  beforeEach(function() {
-    app.params = {}
-    req = {params: {}}
-    res = {}
-  })
+    var handler = function(req, res, next) {
+      res.json({params: req.params})
+    }
+
+    app.get('/by-id/:id', handler)
+    app.get('/by-date/:date', handler)
+    return app
+  }
 
 
   describe('function handlers', function() {
 
     it('positive', function(done) {
-      lib(app)('id', Number)
-
-      next = function(mode) {
-        assert.equal(mode, undefined)
-        assert.equal(req.params.id, 100)
-        done()
-      }
-
-      app.params['id'](req, res, next, '100', 'id')
+      request(makeApp())
+        .get('/by-id/100')
+        .expect(200, function(err, res) {
+          if (err) return done(err)
+          assert.deepEqual(res.body.params, {id: 100})
+          done()
+        })
     })
 
     it('negative', function(done) {
-      lib(app)('id', Number)
-
-      next = function(mode) {
-        assert.equal(mode, 'route')
-        assert.equal(req.params.id, undefined)
-        done()
-      }
-
-      app.params['id'](req, res, next, 'kraken', 'id')
+      request(makeApp())
+        .get('/by-id/kraken')
+        .expect(404, function(err, res) {
+          if (err) return done(err)
+          assert.deepEqual(res.body, {})
+          done()
+        })
     })
 
   })
@@ -51,27 +49,22 @@ describe('express-params-handler', function() {
   describe('regexp handlers', function() {
 
     it('positive', function(done) {
-      lib(app)('date', /^\d{4}-\d{2}-\d{2}$/)
-
-      next = function(mode) {
-        assert.equal(mode, undefined)
-        assert.equal(req.params.date, '2015-07-30')
-        done()
-      }
-
-      app.params['date'](req, res, next, '2015-07-30', 'date')
+      request(makeApp())
+        .get('/by-date/2015-07-30')
+        .expect(200, function(err, res) {
+          assert.deepEqual(res.body.params, {date: '2015-07-30'})
+          done()
+        })
     })
 
     it('negative', function(done) {
-      lib(app)('date', /^\d{4}-\d{2}-\d{2}$/)
-
-      next = function(mode) {
-        assert.equal(mode, 'route')
-        assert.equal(req.params.date, undefined)
-        done()
-      }
-
-      app.params['date'](req, res, next, 'kraken', 'date')
+      request(makeApp())
+        .get('/by-date/kraken')
+        .expect(404, function(err, res) {
+          if (err) return done(err)
+          assert.deepEqual(res.body, {})
+          done()
+        })
     })
 
   })
@@ -79,10 +72,9 @@ describe('express-params-handler', function() {
 
   describe('unsupported handler type', function() {
 
-    it('should complain', function() {
+    it('should complain about invalid handler type', function() {
       assert.throws(function() {
-        lib(app)('id', 'what?')
-        app.params['id'](req, res, next, 'whatever', 'id')
+        lib('nonsense')
       }, /Unsupported param handler/)
     })
 
