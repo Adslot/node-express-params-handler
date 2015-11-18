@@ -21,7 +21,7 @@ var expressParams = require('express-params-handler')
 var app = express()
 
 app.param('id', expressParams(Number))
-app.param('date', expressParams(/^\d{4}-\d{2}-\d(2)$/))
+app.param('date', expressParams(/^\d{4}-\d{2}-\d{2}$/))
 
 app.get('/by-id/:id', function(req, res, next) {
   // req.params.id will be a number
