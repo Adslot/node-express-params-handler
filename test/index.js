@@ -31,13 +31,13 @@ describe('express-params-handler', function() {
     var app = makeApp();
 
     app.param('id', function(req, res, next, value) {
-      req.params.id = value === 'kraken' ? 100 : value;
+      req.params.id = value === 'current' ? 100 : value;
       next();
     })
     app.param('id', lib(Number))
 
     app.param('date', function(req, res, next, value) {
-      req.params.date = value === 'kraken' ? '2015-07-30' : value;
+      req.params.date = value === 'current' ? '2015-07-30' : value;
       next();
     })
     app.param('date', lib(/^\d{4}-\d{2}-\d{2}$/))
@@ -69,7 +69,7 @@ describe('express-params-handler', function() {
 
     it('use actual param value from req.params', function(done) {
       request(makeAppWithModifyingHandlerOfParams())
-        .get('/by-id/kraken')
+        .get('/by-id/current')
         .expect(200, function(err, res) {
           if (err) return done(err)
           assert.deepEqual(res.body.params, {id: 100})
@@ -103,12 +103,12 @@ describe('express-params-handler', function() {
 
     it('use actual param value from req.params', function(done) {
       request(makeAppWithModifyingHandlerOfParams())
-          .get('/by-date/kraken')
-          .expect(200, function(err, res) {
-            if (err) return done(err)
-            assert.deepEqual(res.body.params, {date: '2015-07-30'})
-            done()
-          })
+        .get('/by-date/current')
+        .expect(200, function(err, res) {
+          if (err) return done(err)
+          assert.deepEqual(res.body.params, {date: '2015-07-30'})
+          done()
+        })
     })
 
   })
