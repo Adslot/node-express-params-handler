@@ -1,4 +1,5 @@
 express-params-handler
+[![Build Status](https://api.travis-ci.org/Adslot/node-express-params-handler.png)](https://travis-ci.org/Adslot/node-express-params-handler)
 ============
 
 Express.js v4+ params handler
