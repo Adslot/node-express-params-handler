@@ -1,13 +1,13 @@
 {
   "name": "express-params-handler",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Express.js params handler",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "express": "^4.13.3",
-    "mocha": "latest",
-    "supertest": "^1.1.0"
+    "mocha": "^7.1.1",
+    "supertest": "^4.0.2"
   },
   "scripts": {
     "test": "mocha --recursive"
