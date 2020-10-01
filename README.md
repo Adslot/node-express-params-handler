@@ -1,6 +1,8 @@
 express-params-handler
-[![Build Status](https://api.travis-ci.org/Adslot/node-express-params-handler.png)](https://travis-ci.org/Adslot/node-express-params-handler)
 ============
+
+[![npm version](https://badge.fury.io/js/express-params-handler.svg)](https://badge.fury.io/js/express-params-handler)
+[![Build Status](https://api.travis-ci.org/Adslot/node-express-params-handler.png)](https://travis-ci.org/Adslot/node-express-params-handler)
 
 Express.js v4+ params handler
 
