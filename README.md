@@ -2,7 +2,7 @@ express-params-handler
 ============
 
 [![npm version](https://badge.fury.io/js/express-params-handler.svg)](https://badge.fury.io/js/express-params-handler)
-![Build Status](https://github.com/Adslot/node-express-params-handler/workflows/Node.js%20CI/badge.svg)
+![Build Status](https://github.com/Adslot/node-express-params-handler/actions/workflows/node.js.yml/badge.svg)
 
 Express.js v4+ params handler
 
