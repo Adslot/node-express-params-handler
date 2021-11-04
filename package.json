@@ -34,6 +34,6 @@
     "url": "https://github.com/Adslot/node-express-params-handler/issues"
   },
   "engines": {
-    "node": ">=0.8"
+    "node": "^16"
   }
 }
