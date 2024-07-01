@@ -7,7 +7,7 @@
   "devDependencies": {
     "express": "^4.19.2",
     "mocha": "^10.5.2",
-    "supertest": "^6.3.4"
+    "supertest": "^7.0.0"
   },
   "scripts": {
     "test": "mocha --recursive",
