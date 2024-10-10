@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "express": "^4.21.0",
-    "mocha": "^10.5.2",
+    "mocha": "^10.7.3",
     "supertest": "^7.0.0"
   },
   "scripts": {
