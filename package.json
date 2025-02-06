@@ -3,13 +3,20 @@
   "version": "1.4.0",
   "description": "Express.js params handler",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
+    "eslint": "^9.19.0",
+    "eslint-config-adslot": "^2.0.2",
     "express": "^4.21.2",
+    "globals": "^15.14.0",
     "mocha": "^11.0.1",
+    "prettier": "^3.4.2",
     "supertest": "^7.0.0"
   },
   "scripts": {
+    "format": "prettier ''**/*.js' --write",
+    "lint:eslint": "eslint '**/*.js'",
+    "lint:prettier": "prettier '**/*.js' --check",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
     "test": "mocha --recursive",
     "postversion": "git push -u origin $(git rev-parse --abbrev-ref HEAD) --follow-tags && npm publish && echo '…released.'",
     "preversion": "echo 'Releasing…' && npm ci",
@@ -32,6 +39,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Adslot/node-express-params-handler/issues"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "printWidth": 120
   },
   "engines": {
     "node": "^22"
