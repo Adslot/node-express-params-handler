@@ -4,7 +4,7 @@
   "description": "Express.js params handler",
   "main": "index.js",
   "devDependencies": {
-    "eslint": "^9.19.0",
+    "eslint": "^9.23.0",
     "eslint-config-adslot": "^2.0.2",
     "express": "^4.21.2",
     "globals": "^15.14.0",
