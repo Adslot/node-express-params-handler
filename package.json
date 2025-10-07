@@ -4,10 +4,9 @@
   "description": "Express.js params handler",
   "main": "index.js",
   "devDependencies": {
-    "eslint": "^9.30.0",
-    "eslint-config-adslot": "^2.0.2",
+    "eslint": "^9.37.0",
+    "eslint-config-adslot": "^2.1.1",
     "express": "^5.1.0",
-    "globals": "^16.4.0",
     "mocha": "^11.7.4",
     "prettier": "^3.6.2",
     "supertest": "^7.1.4"
